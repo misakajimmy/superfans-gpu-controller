@@ -193,6 +193,7 @@ def ipmi_raw_cmd(raw_cmd, hostname = 'localhost', username=None, password=None, 
       cmd_pass = '-P %s' % shlex.quote(password)
     cmd = 'ipmitool -I lanplus -U %s %s -H %s raw %s' % (shlex.quote(username), cmd_pass, hostname, raw_cmd)
 
+  print("Running command: %s" % cmd)
   try:
     s = subprocess.check_output(cmd + " 2>&1", shell=True)
   except subprocess.CalledProcessError as ex:
